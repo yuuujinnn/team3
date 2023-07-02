@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/poll/style.css' %}">
+    <title></title>
+</head>
+<body>
+    <header class="header-bar">
+        <section class="header-icon-box">
+            <div class="header-logo"><a href="{% url 'poll:index' %}"><img src="{% static 'images/logo/연함.png' %}" alt="">집집</a></div>
+        </section>
+        <section class="header-side-login">
+            <ul>
+              {% if user.is_authenticated %}
+                <li style="border-right: transparent;">
+                    <a href="{% url 'common:signout' %}">
+                        로그아웃
+                    </a>
+                    <a href="#" class="mypage_view">(마이)<iframe src="{% url 'common:mypage' %}" target="_self"></iframe></a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'common:signin' %}">로그인</a>
+                </li>
+                <li>
+                    <a href="{% url 'common:signin' %}">회원가입</a>
+                </li>
+                {% endif %}
+            </ul>
+        </section>
+        <section class="header-menu">
+            <ul>
+                <li>
+                    <a href="{% url 'map:search' %}">
+                        <span>집찾기</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'koreaCalendar:subCalendar' %}">
+                        <span>청약</span>
+                    </a>
+                    <ul class="header-score">
+                        <li><a href="{% url 'koreaCalendar:subCalendar' %}">청약 일정</a></li>
+                        <li><a href="{% url 'calculate:calculate' %}">청약점수 조회</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{% url 'information:information' %}">
+                        <span>알려드려요</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'community:free' %}">
+                        <span>커뮤니티</span>
+                    </a>
+                    <ul>
+                        <li><a href="{% url 'community:free' %}">자유게시판</a></li>
+                        <li><a href="{% url 'review:review_main' %}">거래후기 게시판</a></li>
+                        <li><a href="{% url 'interior:interior' %}">인테리어 게시판</a></li>
+                        <li><a href="{% url 'news:news' %}">뉴스</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{% url 'notice:notice' %}">
+                        <span>고객서비스</span>
+                    </a>
+                    <ul>
+                        <li><a href="{% url 'notice:notice' %}">공지사항</a></li>
+                        <li><a href="{% url 'introduction:introduction' %}">소개</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </header>
+</body>
+</html>

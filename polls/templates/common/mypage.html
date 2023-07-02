@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/common/style.css' %}">
+</head>
+<body>
+
+    <div class="mypage">
+        <ul>
+            <li>아이디: {{ user.username }}</li>
+            <li>이메일: {{ user.email }}</li>
+            <li>이름: {{ user.last_name }}</li>
+            <li>가입일: {{ user.date_joined|date:"y-m-d" }}</li>
+            
+        </ul>
+    </div>
+
+</body>
+</html>
